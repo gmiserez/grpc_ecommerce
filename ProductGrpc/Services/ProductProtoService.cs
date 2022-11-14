@@ -2,7 +2,6 @@
 using ProductGrpc.DAL;
 using ProductGrpc.Models;
 using ProductGrpc.Protos;
-using System.ComponentModel.DataAnnotations;
 using static ProductGrpc.Protos.ProductProtoService;
 
 namespace ProductGrpc.Services
@@ -22,7 +21,7 @@ namespace ProductGrpc.Services
 
             if(product == null)
             {
-                return null;
+                throw new RpcException(new Status(StatusCode.NotFound, "didn't find it"));
             }
 
             return new ProductModel
