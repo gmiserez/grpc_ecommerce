@@ -52,5 +52,16 @@ namespace ProductGrpc.Services
                 await responseStream.WriteAsync(model);
             }
         }
+
+        public override async Task<ProductModel> AddProduct(AddProductRequest request, ServerCallContext context)
+        {
+            await _productRepository.Add(
+                new Product(
+                    request.Product.ProductId, 
+                    request.Product.Name, 
+                    (Models.ProductStatus)request.Product.Status));
+
+            return request.Product;
+        }
     }
 }

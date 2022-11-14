@@ -34,5 +34,10 @@ namespace ProductGrpc.DAL
         {
             return _collection.Find(Builders<Product>.Filter.Empty).ToListAsync();
         }
+
+        public Task Add(Product product)
+        {
+            return _collection.InsertOneAsync(product);
+        }
     }
 }
