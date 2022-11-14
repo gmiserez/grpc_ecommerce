@@ -62,5 +62,26 @@ namespace ProductGrpc.Services
 
             return request.Product;
         }
+
+        public override async Task<InsertBulkProductResponse> InsertBulkProduct(
+            IAsyncStreamReader<ProductModel> requestStream, ServerCallContext context)
+        {
+            int ct = 0;
+            await foreach(var model in requestStream.ReadAllAsync(context.CancellationToken))
+            {
+                await _productRepository.Add(
+                     new Product(
+                    model.ProductId,
+                    model.Name,
+                    (Models.ProductStatus)model.Status));
+                ct++;
+            }
+
+            return new InsertBulkProductResponse
+            {
+                Success = true,
+                InsertCount = ct
+            };
+        }
     }
 }

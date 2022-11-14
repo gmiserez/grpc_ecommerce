@@ -24,7 +24,7 @@ internal class Program
         {
             Console.WriteLine(responseData);
         }
-        
+
         /* Add Product */
         //await client.AddProductAsync(
         //    new ProductGrpc.Protos.AddProductRequest
@@ -36,5 +36,25 @@ internal class Program
         //            Status = ProductGrpc.Protos.ProductStatus.Low
         //        }
         //    });
+
+        /* Insert Bulk */
+        using var clientBulk = client.InsertBulkProduct();
+        for (var i=0; i<3; i++)
+        {
+            var product = new ProductGrpc.Protos.ProductModel
+            {
+                ProductId = i + 5,
+                Name = $"Qux{i}",
+                Status = ProductGrpc.Protos.ProductStatus.Low
+            };
+
+            await clientBulk.RequestStream.WriteAsync(product);
+        }
+        await clientBulk.RequestStream.CompleteAsync();
+
+        var responseBulk = await clientBulk;
+        Console.WriteLine(responseBulk.InsertCount);
+
+        Console.ReadLine();
     }
 }
