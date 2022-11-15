@@ -16,14 +16,14 @@ namespace IdentityServer
                     {
                         new Secret("secret".Sha256()) 
                     },
-                    AllowedScopes = { "ShoppingCarAPI" }
+                    AllowedScopes = { "ShoppingCartAPI" }
                 }
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("ShoppingCarAPI", "Shopping Cart API")
+                new ApiScope("ShoppingCartAPI", "Shopping Cart API")
             };
            
     }

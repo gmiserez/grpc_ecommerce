@@ -1,6 +1,7 @@
 ﻿using Grpc.Core;
 using Grpc.Net.Client;
 using Microsoft.Extensions.DependencyInjection;
+using ProductGrpcClientConsole;
 
 internal class Program
 {
@@ -8,14 +9,17 @@ internal class Program
 
     private static async Task Main(string[] args)
     {
-        using var channel = GrpcChannel.ForAddress(GrpcApi);
-        var client = new ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient(channel);
+        //using var channel = GrpcChannel.ForAddress(GrpcApi);
+        //var client = new ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient(channel);
 
         var services = new ServiceCollection();
+        services.AddSingleton<AuthenticationHandler>();
+        services.AddHttpClient(nameof(ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient))
+            .AddHttpMessageHandler<AuthenticationHandler>();
+
         services.AddGrpcClient<ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient>(opt => opt.Address = new Uri(GrpcApi));
-        var provider = services.BuildServiceProvider();
-        var client2 = provider.GetRequiredService<ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient>();
-        var factory = provider.GetRequiredService<IHttpClientFactory>();
+        ServiceProvider provider = services.BuildServiceProvider();
+        var client = provider.GetRequiredService<ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient>();
 
         /* Get inexistent product */
         try
@@ -47,7 +51,7 @@ internal class Program
         //    });
 
         /* Insert Bulk */
-        using var clientBulk = client2.InsertBulkProduct();
+        using var clientBulk = client.InsertBulkProduct();
         for (var i=0; i<3; i++)
         {
             var product = new ProductGrpc.Protos.ProductModel
