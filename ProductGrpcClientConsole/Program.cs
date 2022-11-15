@@ -1,12 +1,20 @@
 ﻿using Grpc.Core;
 using Grpc.Net.Client;
+using Microsoft.Extensions.DependencyInjection;
 
 internal class Program
 {
+    private const string GrpcApi = "https://localhost:7151";
+
     private static async Task Main(string[] args)
     {
-        using var channel = GrpcChannel.ForAddress("https://localhost:7151");
+        using var channel = GrpcChannel.ForAddress(GrpcApi);
         var client = new ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient(channel);
+
+        var services = new ServiceCollection();
+        services.AddGrpcClient<ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient>(opt => opt.Address = new Uri(GrpcApi));
+        var provider = services.BuildServiceProvider();
+        var client2 = provider.GetRequiredService<ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient>();
 
         /* Get inexistent product */
         try
@@ -38,12 +46,12 @@ internal class Program
         //    });
 
         /* Insert Bulk */
-        using var clientBulk = client.InsertBulkProduct();
+        using var clientBulk = client2.InsertBulkProduct();
         for (var i=0; i<3; i++)
         {
             var product = new ProductGrpc.Protos.ProductModel
             {
-                ProductId = i + 5,
+                ProductId = i + 10,
                 Name = $"Qux{i}",
                 Status = ProductGrpc.Protos.ProductStatus.Low
             };

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gille\\source\\repos\\grpc_ecommerce\\ProductGrpcClientConsole\\ProductGrpcClientConsole.csproj": {}
+    "C:\\Users\\gille\\source\\github\\grpc_ecommerce\\ProductGrpcClientConsole\\ProductGrpcClientConsole.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gille\\source\\repos\\grpc_ecommerce\\ProductGrpcClientConsole\\ProductGrpcClientConsole.csproj": {
+    "C:\\Users\\gille\\source\\github\\grpc_ecommerce\\ProductGrpcClientConsole\\ProductGrpcClientConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gille\\source\\repos\\grpc_ecommerce\\ProductGrpcClientConsole\\ProductGrpcClientConsole.csproj",
+        "projectUniqueName": "C:\\Users\\gille\\source\\github\\grpc_ecommerce\\ProductGrpcClientConsole\\ProductGrpcClientConsole.csproj",
         "projectName": "ProductGrpcClientConsole",
-        "projectPath": "C:\\Users\\gille\\source\\repos\\grpc_ecommerce\\ProductGrpcClientConsole\\ProductGrpcClientConsole.csproj",
+        "projectPath": "C:\\Users\\gille\\source\\github\\grpc_ecommerce\\ProductGrpcClientConsole\\ProductGrpcClientConsole.csproj",
         "packagesPath": "C:\\Users\\gille\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gille\\source\\repos\\grpc_ecommerce\\ProductGrpcClientConsole\\obj\\",
+        "outputPath": "C:\\Users\\gille\\source\\github\\grpc_ecommerce\\ProductGrpcClientConsole\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -56,9 +56,17 @@
               "target": "Package",
               "version": "[2.49.0, )"
             },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.49.0, )"
+            },
             "Grpc.Tools": {
               "target": "Package",
               "version": "[2.49.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.0.0, )"
             }
           },
           "imports": [

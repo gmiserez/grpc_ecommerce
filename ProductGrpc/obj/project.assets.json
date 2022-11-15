@@ -1568,11 +1568,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gille\\source\\repos\\grpc_ecommerce\\ProductGrpc\\ProductGrpc.csproj",
+      "projectUniqueName": "C:\\Users\\gille\\source\\github\\grpc_ecommerce\\ProductGrpc\\ProductGrpc.csproj",
       "projectName": "ProductGrpc",
-      "projectPath": "C:\\Users\\gille\\source\\repos\\grpc_ecommerce\\ProductGrpc\\ProductGrpc.csproj",
+      "projectPath": "C:\\Users\\gille\\source\\github\\grpc_ecommerce\\ProductGrpc\\ProductGrpc.csproj",
       "packagesPath": "C:\\Users\\gille\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gille\\source\\repos\\grpc_ecommerce\\ProductGrpc\\obj\\",
+      "outputPath": "C:\\Users\\gille\\source\\github\\grpc_ecommerce\\ProductGrpc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
