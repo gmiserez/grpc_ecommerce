@@ -1,4 +1,5 @@
 ﻿using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using ProductGrpc.DAL;
 using ProductGrpc.Models;
 using ProductGrpc.Protos;
@@ -6,6 +7,7 @@ using static ProductGrpc.Protos.ProductProtoService;
 
 namespace ProductGrpc.Services
 {
+    [Authorize]
     public class ProductProtoService: ProductProtoServiceBase
     {
         private readonly ProductRepository _productRepository;

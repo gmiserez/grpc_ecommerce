@@ -15,6 +15,7 @@ internal class Program
         services.AddGrpcClient<ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient>(opt => opt.Address = new Uri(GrpcApi));
         var provider = services.BuildServiceProvider();
         var client2 = provider.GetRequiredService<ProductGrpc.Protos.ProductProtoService.ProductProtoServiceClient>();
+        var factory = provider.GetRequiredService<IHttpClientFactory>();
 
         /* Get inexistent product */
         try

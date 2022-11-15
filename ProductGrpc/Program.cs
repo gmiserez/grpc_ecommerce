@@ -21,13 +21,27 @@ public static partial class Program
 
         MongoOptions mongoOptions = GetMongoDbConfiguration(config);
 
-        builder.Services.AddSingleton(mongoOptions)
+        builder.Services
+            .AddSingleton(mongoOptions)
             .AddSingleton<IProductContext, ProductContext>()
             .AddSingleton<ProductRepository>();
+
+        builder.Services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", opt =>
+                {
+                    opt.Authority = "https://localhost:5005";
+                    opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateAudience = false
+                    };
+                });
+        builder.Services.AddAuthorization();
 
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
+        app.UseAuthentication();
+        app.UseAuthorization();
         app.MapGrpcService<GreeterService>();
         app.MapGrpcService<ProductProtoService>();
         app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");

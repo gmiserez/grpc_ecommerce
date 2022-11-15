@@ -82,3 +82,10 @@ C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\obj\Debug\net6.0\refint\
 C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\obj\Debug\net6.0\ProductGrpc.pdb
 C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\obj\Debug\net6.0\ProductGrpc.genruntimeconfig.cache
 C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\obj\Debug\net6.0\ref\ProductGrpc.dll
+C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\gille\source\github\grpc_ecommerce\ProductGrpc\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
